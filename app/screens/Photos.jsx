@@ -63,7 +63,7 @@ export const Photos = () => {
         numColumns={4}
         keyExtractor={(item) => String(item.id * Math.random())}
         renderItem={({ item }) => <ImageCard imageDetail={item} />}
-        onEndReachedThreshold={0.5}
+        onEndReachedThreshold={0.3}
         onEndReached={next ? getMoreImages : null}
         onScroll={(e) => setScrollPosition(e.nativeEvent.contentOffset.y)}
         ref={flatListRef}

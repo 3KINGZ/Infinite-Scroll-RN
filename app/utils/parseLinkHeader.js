@@ -1,5 +1,4 @@
 export default parseLinkHeader = (link) => {
-  // let links;
   const links = link.split(",").reduce((acc, link) => {
     let match = link.match(/<(.*)>; rel="(\w*)"/);
     let url = match[1];
