@@ -12,6 +12,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import ImageContext from "../context/ImageContext";
 import { ImageCard, GoUpButton } from "../components";
 
+const ITEM_HEIGHT = 100;
+
 export const Photos = () => {
   const { state, dispatch } = useContext(ImageContext);
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -67,6 +69,11 @@ export const Photos = () => {
         onEndReached={next ? getMoreImages : null}
         onScroll={(e) => setScrollPosition(e.nativeEvent.contentOffset.y)}
         ref={flatListRef}
+        getItemLayout={(data, index) => ({
+          length: ITEM_HEIGHT,
+          offset: ITEM_HEIGHT * index,
+          index,
+        })}
       />
       {scrollPosition > 10 && <GoUpButton onPress={toTop} />}
     </SafeAreaView>
